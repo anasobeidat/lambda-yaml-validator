@@ -7,22 +7,32 @@ This is a yaml validator lambda function. I used it to validate YAML config file
 
 > lambda_function_local.py: Python 3.8 script to check config locally 
 
-
-## Install dependency locally to package/
+## Deployment Steps
+### Install dependency locally to package/
+```
 pip3 install --target ./package yamllint
+```
 
-## Package the dependencies installed in package/
+### Package the dependencies installed in package/
+```
 cd package
 zip -r ../my-deployment-package.zip .
+```
 
-## Return to project base dir
+### Return to project base dir
+```
 cd ..
+```
 
-## Package Lambda function and Config with it's dependencies
+### Package Lambda function and Config with it's dependencies
+```
 zip -g my-deployment-package.zip lambda_function.py default_lint.yml
+```
 
-## Deploy to Lambda
+### Deploy to Lambda
+```
 aws lambda update-function-code --function-name <aws_lambda_function_name> --zip-file fileb://my-deployment-package.zip
+```
 
-## Reference:
+### Reference:
 https://github.com/adrienverge/yamllint
